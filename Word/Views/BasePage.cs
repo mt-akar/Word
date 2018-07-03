@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,11 +6,7 @@ using System.Windows.Media.Animation;
 
 namespace Word
 {
-    /// <summary>
-    /// A base page for all pages to gain base functionalities
-    /// </summary>
-    public class BasePage<VM> : Page
-        where VM : BaseViewModel, new()
+    public class BasePage : Page
     {
         #region Events
 
@@ -19,32 +14,6 @@ namespace Word
         /// Event raised when the page is done being animated out
         /// </summary>
         public static event Action<ApplicationPageEnum> DoneAnimatingOut;
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// View model of this page
-        /// </summary>
-        VM viewModel;
-
-        /// <summary>
-        /// View model of this page
-        /// </summary>
-        public VM VievModel { get => viewModel;
-            set
-            {
-                // If same value is passed, return
-                if (value == viewModel) return;
-
-                // Update the value
-                viewModel = value;
-
-                // Set the viev model of this page
-                DataContext = viewModel;
-            }
-        }
 
         #endregion
 
@@ -66,24 +35,20 @@ namespace Word
 
         #region Constructor
 
-        /// <inheritdoc />
         /// <summary>
         /// Default constructor
         /// </summary>
         public BasePage()
         {
+            /* This seems to not have any effect.
+
             // If the page has a enter animation, start the page as collapsed
-            if (LoadAnimation != PageAnimationEnum.None)
-                Visibility = Visibility.Collapsed;
+            //if (LoadAnimation != PageAnimationEnum.None)
+            //    Visibility = Visibility.Collapsed;
+            */
 
             // Listen out for page loaded
             Loaded += BasePage_Loaded;
-
-            // Set the view model
-            VievModel = new VM();
-
-            // Listen out for page changing
-            viewModel.ChangePageTo += BasePage_Unload;
         }
 
         #endregion
@@ -95,7 +60,7 @@ namespace Word
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void BasePage_Loaded(object sender, RoutedEventArgs e)
+        async void BasePage_Loaded(object sender, RoutedEventArgs e)
         {
             // Animate the page in
             await AnimateIn(); // You cannot make another thread execute AnimateIn function because the "page" is on UI thread.
@@ -105,7 +70,7 @@ namespace Word
         /// When the page is loaded, perform the animation
         /// </summary>
         /// <param name="pageEnum">Page to be load after this page unloads</param>
-        private async void BasePage_Unload(ApplicationPageEnum pageEnum)
+        protected async void BasePage_Unload(ApplicationPageEnum pageEnum)
         {
             // Animate the page out
             await AnimateOut(); // You cannot make another thread execute AnimateIn function because the "page" is on UI thread.
@@ -143,6 +108,7 @@ namespace Word
                     Visibility = Visibility.Visible;
                     await Task.Delay((int)(AnimationDuration * 1000));
                     break;
+
                 default:
                     throw new NotImplementedException("Animation type is not implemented");
             }
@@ -173,6 +139,7 @@ namespace Word
                     Visibility = Visibility.Visible;
                     await Task.Delay((int)(AnimationDuration * 1000));
                     break;
+
                 default:
                     throw new NotImplementedException("Animation type is not implemented");
             }

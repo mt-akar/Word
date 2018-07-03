@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+
 namespace Word
 {
     /// <summary>
@@ -9,6 +11,10 @@ namespace Word
     /// </summary>
     public class ChatPageViewModel : BaseViewModel
     {
+        #region Public Properties
 
+        public ObservableCollection<ContactViewModel> Contacts { get; }
+
+        #endregion
     }
 }

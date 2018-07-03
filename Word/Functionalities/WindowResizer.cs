@@ -41,7 +41,7 @@ namespace Word
         /// <summary>
         /// The last known dock position
         /// </summary>
-        private WindowDockPosition mLastDock = WindowDockPosition.Undocked;
+        private WindowDockPositionEnum mLastDock = WindowDockPositionEnum.Undocked;
 
         #endregion
 
@@ -64,7 +64,7 @@ namespace Word
         /// <summary>
         /// Called when the window dock position changes
         /// </summary>
-        public event Action<WindowDockPosition> WindowDockChanged = (dock) => { };
+        public event Action<WindowDockPositionEnum> WindowDockChanged = (dock) => { };
 
         #endregion
 
@@ -166,16 +166,16 @@ namespace Word
             var edgedRight = windowBottomRight.X >= (mScreenSize.Right - mEdgeTolerance);
 
             // Get docked position
-            var dock = WindowDockPosition.Undocked;
+            var dock = WindowDockPositionEnum.Undocked;
 
             // Left docking
             if (edgedTop && edgedBottom && edgedLeft)
-                dock = WindowDockPosition.Left;
+                dock = WindowDockPositionEnum.Left;
             else if (edgedTop && edgedBottom && edgedRight)
-                dock = WindowDockPosition.Right;
+                dock = WindowDockPositionEnum.Right;
             // None
             else
-                dock = WindowDockPosition.Undocked;
+                dock = WindowDockPositionEnum.Undocked;
 
             // If dock has changed
             if (dock != mLastDock)

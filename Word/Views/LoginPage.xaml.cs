@@ -1,16 +1,11 @@
-﻿using System;
-using System.Security;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
+﻿using System.Security;
 
 namespace Word
 {
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : BasePage<LoginPageViewModel>, IHavePassword
+    public partial class LoginPage : FunctionalBasePage<LoginPageViewModel>, IHavePassword
     {
         #region IHavePassword
 

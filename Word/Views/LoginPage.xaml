@@ -1,4 +1,4 @@
-﻿<local:BasePage
+﻿<local:FunctionalBasePage
     x:TypeArguments="local:LoginPageViewModel"
     x:Class="Word.LoginPage"
     x:Name="Login_Page"
@@ -15,7 +15,7 @@
     <!-- Login Box -->
     <StackPanel TextBlock.TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Margin="50">
         <!--White box-->
-        <Border Background="White" CornerRadius="{Binding CornerRadius, FallbackValue=10}">
+        <Border Background="White" CornerRadius="{Binding CornRadius, FallbackValue=10}">
             <StackPanel Margin="15 70 15 40">
                 <!--Sign In Text-->
                 <TextBlock Text="Sign In" FontFamily="{StaticResource LatoRegular}" FontSize="{StaticResource FontSizeVeryLarge}"
@@ -30,7 +30,7 @@
                 <!--Email box-->
                 <TextBox Text="{Binding Email}" Style="{StaticResource EmailBox}" Tag="Enter e-mail here...">
                     <TextBox.InputBindings>
-                        <KeyBinding Key="Enter" Command="{Binding LoginButtonAction}"/>
+                        <KeyBinding Key="Enter" Command="{Binding LoginCommand}"/>
                     </TextBox.InputBindings>
                 </TextBox>
 
@@ -40,7 +40,7 @@
                 <!--Password box-->
                 <PasswordBox x:Name="PasswordContainer" Style="{StaticResource PasswordBox}" Tag="Enter password here...">
                     <PasswordBox.InputBindings>
-                        <KeyBinding Key="Enter" Command="{Binding LoginButtonAction}"/>
+                        <KeyBinding Key="Enter" Command="{Binding LoginCommand}"/>
                     </PasswordBox.InputBindings>
                 </PasswordBox>
 
@@ -54,4 +54,4 @@
         <Button Style="{StaticResource TextButton}" FontSize="{StaticResource FontSizeSmall}"
                 Content="Don't have an account? It is free!" Margin="0 15 0 0" HorizontalAlignment="Center"/>
     </StackPanel>
-</local:BasePage>
+</local:FunctionalBasePage>

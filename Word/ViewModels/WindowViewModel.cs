@@ -19,7 +19,7 @@ namespace Word
         /// <summary>
         /// The last known dock position
         /// </summary>
-        WindowDockPosition dockPosition = WindowDockPosition.Undocked; // Never changes basically
+        WindowDockPositionEnum dockPosition = WindowDockPositionEnum.Undocked; // Never changes basically
 
         #endregion
 
@@ -33,12 +33,12 @@ namespace Word
         /// <summary>
         /// Emphesizes the minimum window Height
         /// </summary>
-        public int MinimumWindowHeight { get; } = 450;
+        public int MinimumWindowHeight { get; } = 500;
 
         /// <summary>
         /// True if the window should be borderless because it is docked or maximized
         /// </summary>
-        public bool Borderless => window.WindowState == WindowState.Maximized || dockPosition != WindowDockPosition.Undocked;
+        public bool Borderless => window.WindowState == WindowState.Maximized || dockPosition != WindowDockPositionEnum.Undocked;
 
         /// <summary>
         /// Outer margin width to create the dropshadow in
@@ -62,7 +62,11 @@ namespace Word
         /// <summary>
         /// The height of the caption, bar on top of the window
         /// </summary>
-        public GridLength CaptionGridLength { get; } = new GridLength(48);
+        public GridLength CaptionGridLength => new GridLength(48);
+        /// <summary>
+        /// True height of the caption calculating the outer margin 
+        /// </summary>
+        public double TrueCaptionHeight => 33 + OuterMargin;
 
         /// <summary>
         /// <see cref="Thickness"/> version of <see cref="InnerContentPadding"/>
@@ -81,22 +85,22 @@ namespace Word
         /// <summary>
         /// The command to minimize the window
         /// </summary>
-        public ICommand MinimizeCommand { get => new RelayCommand(true, () => window.WindowState = WindowState.Minimized); }
+        public ICommand MinimizeCommand => new RelayCommand(true, () => window.WindowState = WindowState.Minimized);
 
         /// <summary>
         /// The command to maximize the window
         /// </summary>
-        public ICommand MaximizeCommand { get => new RelayCommand(true, () => window.WindowState ^= WindowState.Maximized); }
+        public ICommand MaximizeCommand => new RelayCommand(true, () => window.WindowState ^= WindowState.Maximized);
 
         /// <summary>
         /// The command to close the window
         /// </summary>
-        public ICommand CloseCommand { get => new RelayCommand(true, window.Close); }
+        public ICommand CloseCommand => new RelayCommand(true, window.Close);
 
         /// <summary>
         /// The command to show the menu
         /// </summary>
-        public ICommand MenuCommand { get => new RelayCommand(true, () => SystemCommands.ShowSystemMenu(window, window.PointToScreen(Mouse.GetPosition(window)))); }
+        public ICommand MenuCommand => new RelayCommand(true, () => SystemCommands.ShowSystemMenu(window, window.PointToScreen(Mouse.GetPosition(window))));
 
         #endregion
 
@@ -118,7 +122,7 @@ namespace Word
                 OnPropertyChanged(nameof(CornRadius));
             };
 
-            BasePage<LoginPageViewModel>.DoneAnimatingOut += ChangePage;
+            BasePage.DoneAnimatingOut += ChangePage;
 
             // This fixes a window size bug relating WindowStyle="None" where the content goes out of the screen and behind the taskbar
             new WindowResizer(window);
@@ -126,9 +130,17 @@ namespace Word
 
         #endregion
 
+        #region Event Listeners
+
+        /// <summary>
+        /// Event listener that changes the current page
+        /// </summary>
+        /// <param name="newPage"></param>
         void ChangePage(ApplicationPageEnum newPage)
         {
             CurrentPage = newPage;
         }
+
+        #endregion
     }
 }

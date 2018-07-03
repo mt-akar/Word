@@ -1,7 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Word
@@ -12,6 +12,11 @@ namespace Word
     public class LoginPageViewModel : BaseViewModel
     {
         #region Public Properties
+
+        /// <summary>
+        /// Corner radius of the login box
+        /// </summary>
+        public CornerRadius CornRadius => new CornerRadius(10);
 
         /// <summary>
         /// Email of the user
@@ -48,7 +53,7 @@ namespace Word
                 await Task.Run(() =>
                 {
                     // Simulate some action, temporary
-                    Thread.Sleep(500);
+                    Thread.Sleep(0);
 
                     // Store the credentials
                     var email = Email ?? "";

@@ -21,5 +21,5 @@
         SlideAndFadeOutToLeft
     }
 
-    // We could consider putting this inside the BasePage.cs class bacause this enum is used only by that class.
+    // We could consider putting this inside the FunctionalBasePage.cs class bacause this enum is used only by that class.
 }

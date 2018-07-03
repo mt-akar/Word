@@ -33,7 +33,7 @@
                                 <Border x:Name="OpacityMask" Background="PeachPuff" CornerRadius="{Binding CornRadius, FallbackValue=10}"/>
 
                                 <!--Window border and dropshadow-->
-                                <Border Background="{Binding BackGroundLightBrush, FallbackValue=#efefef}" CornerRadius="{Binding CornRadius, FallbackValue=10}">
+                                <Border Background="{StaticResource BackGroundLightBrush}" CornerRadius="{Binding CornRadius, FallbackValue=10}">
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="0" Opacity=".2"/>
                                     </Border.Effect>
@@ -48,7 +48,7 @@
 
                                     <Grid.RowDefinitions>
                                         <!--Caption row-->
-                                        <RowDefinition Height="{Binding CaptionGridLength, FallbackValue=42}"/>
+                                        <RowDefinition Height="{Binding CaptionGridLength, FallbackValue=48}"/>
                                         <!--Content row-->
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
@@ -134,12 +134,12 @@
         <WindowChrome
             CornerRadius="0"
             ResizeBorderThickness="{Binding ResizeBorderThickness}"
-            CaptionHeight="{Binding CaptionHeight, FallbackValue=42}"
+            CaptionHeight="{Binding TrueCaptionHeight, FallbackValue=48}"
             GlassFrameThickness="0"
             />
     </WindowChrome.WindowChrome>
 
-    <Border Background="Transparent" Padding="{Binding InnerContentPadding}" >
+    <Border Background="Transparent" Padding="{Binding InnerContentPaddingThickness}" >
         <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
     </Border>
 </Window>

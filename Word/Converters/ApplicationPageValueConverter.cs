@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Globalization;
+using System.Windows.Controls; // Used in comments
 
 namespace Word
 {

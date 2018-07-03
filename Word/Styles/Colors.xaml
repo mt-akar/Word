@@ -4,7 +4,11 @@
 
     <Color x:Key="BackGroundVeryLight">#fcfcfc</Color>
     <SolidColorBrush x:Key="BackGroundVeryLightBrush" Color="{StaticResource BackGroundVeryLight}"/>
-    
+    <Color x:Key="BackGroundVeryLight10">#19fcfcfc</Color>
+    <SolidColorBrush x:Key="BackGroundVeryLight10Brush" Color="{StaticResource BackGroundVeryLight10}"/>
+    <Color x:Key="BackGroundVeryLight15">#26fcfcfc</Color>
+    <SolidColorBrush x:Key="BackGroundVeryLight15Brush" Color="{StaticResource BackGroundVeryLight15}"/>
+
     <Color x:Key="BackGroundLight">#efefef</Color>
     <SolidColorBrush x:Key="BackGroundLightBrush" Color="{StaticResource BackGroundLight}"/>
 

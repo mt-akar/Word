@@ -9,7 +9,7 @@ namespace Word
     /// <summary>
     /// The dock position of the window
     /// </summary>
-    public enum WindowDockPosition
+    public enum WindowDockPositionEnum
     {
         /// <summary>
         /// Not docked

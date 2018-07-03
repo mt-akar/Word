@@ -70,30 +70,32 @@
     <Compile Include="AtachedProperties\PasswordBoxAttachedProperties.cs" />
     <Compile Include="Converters\ApplicationPageValueConverter.cs" />
     <Compile Include="Converters\BaseValueConverter.cs" />
-    <Compile Include="Pages\ApplicationPageEnum.cs" />
+    <Compile Include="Views\ApplicationPageEnum.cs" />
     <Compile Include="Interfaces\IHavePassword.cs" />
-    <Compile Include="Pages\BasePage.cs" />
-    <Compile Include="Pages\ChatPage.xaml.cs">
+    <Compile Include="Views\BasePage.cs" />
+    <Compile Include="ViewModels\ContactViewModel.cs" />
+    <Compile Include="Views\FunctionalBasePage.cs" />
+    <Compile Include="Views\ChatPage.xaml.cs">
       <DependentUpon>ChatPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LoginPage.xaml.cs">
+    <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Security\SecureStringExtender.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
-    <Compile Include="ViewModels\Base\RelayParameterizedCommand.cs" />
-    <Compile Include="ViewModels\Base\RelayCommand.cs" />
-    <Compile Include="ViewModels\Base\BaseViewModel.cs" />
+    <Compile Include="Functionalities\RelayParameterizedCommand.cs" />
+    <Compile Include="Functionalities\RelayCommand.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ChatPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\WindowViewModel.cs" />
-    <Compile Include="Window\WindowDockPosition.cs" />
-    <Compile Include="Window\WindowResizer.cs" />
-    <Page Include="Pages\ChatPage.xaml">
+    <Compile Include="Enumerators\WindowDockPositionEnum.cs" />
+    <Compile Include="Functionalities\WindowResizer.cs" />
+    <Page Include="Views\ChatPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\LoginPage.xaml">
+    <Page Include="Views\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,9 +150,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Fonts\fa-brands-400.ttf" />
     <Resource Include="Fonts\fa-regular-400.ttf" />
-    <Resource Include="Fonts\fa-solid-900.ttf" />
     <Resource Include="Fonts\Lato-Black.ttf" />
     <Resource Include="Fonts\Lato-BlackItalic.ttf" />
     <Resource Include="Fonts\Lato-Bold.ttf" />
